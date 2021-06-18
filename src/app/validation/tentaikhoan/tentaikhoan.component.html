@@ -1,0 +1,14 @@
+<div *ngIf="keyName.invalid && (keyName.dirty || keyName.touched)" class="alert alert-danger">
+        <div *ngIf="keyName.errors.required">
+                Tên Tài Khoản là bắt buộc
+        </div>
+        <div *ngIf="keyName.errors.maxlength">
+                Độ dài phải đủ 8 ký tự
+        </div>
+        <div *ngIf="keyName.errors.minlength">
+                Độ dài phải đủ 8 ký tự
+        </div>
+        <div *ngIf="keyName.errors.pattern">
+                Tên Tài Khoản không hợp lệ
+        </div>
+</div>

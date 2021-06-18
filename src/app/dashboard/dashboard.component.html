@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ngocdaoblock">
+        <h4>DANH SÁCH TÀI KHOẢN</h4>
+        <button type="button" class="ngocdao btn btn-primary"><a routerLink="/taikhoans">TẠO TÀI KHOẢN</a></button>
+        <button class="card btn" (click)="toggle()">
+          <i class="fa fa-th" aria-hidden="true"></i>
+        </button>
+        <div *ngIf="show" class="wrapper">
+          <div class="daongoc" *ngFor="let taikhoan of taikhoans">
+            <p><img src="assets/{{taikhoan.avatar}}" /></p>
+            <p><b>Tên Tài Khoản:</b> {{taikhoan.tentaikhoan}}</p>
+            <p><b>Tên:</b> {{taikhoan.ten}}</p>
+            <p><b>Ngày Sinh:</b> {{taikhoan.ngaysinh}}</p>
+            <p><b>Địa Chỉ:</b> {{taikhoan.diachi}}</p>
+            <p><b>Email:</b> {{taikhoan.email}}</p>
+            <p><a type="button" routerLink="/detail/{{taikhoan.id}}" class="btn btn-primary"><i class="fa fa-pencil"
+              aria-hidden="true"> </i> </a> ||
+
+          <button type="button" (click)="delete(taikhoan)" class="btn btn-primary"><i class="fa fa-trash-o"
+              aria-hidden="true"></i></button></p>
+          </div>
+        </div>
+        <table *ngIf="!show" class="table table-hover" style="overflow-x:auto;">
+          <thead >
+            <tr >
+              <th>Avatar</th>
+              <th>Tên Tài Khoản</th>
+              <th>Tên</th>
+              <th>Ngày Sinh</th>
+              <th>Địa Chỉ</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody cdkDropList (cdkDropListDropped)="dropTable($event)">
+            <tr  *ngFor="let taikhoan of taikhoans"  cdkDrag >
+              <td > <img src="assets/{{taikhoan.avatar}}" /> </td>
+              <td style="padding-top: 25px;">{{taikhoan.tentaikhoan}}</td>
+              <td style="padding-top: 25px;">{{taikhoan.ten}}</td>
+              <td style="padding-top: 25px;">{{taikhoan.ngaysinh}}</td>
+              <td style="padding-top: 25px;">{{taikhoan.diachi}}</td>
+              <td style="padding-top: 25px;">{{taikhoan.email}}</td>
+              <td style="padding-top: 15px;">
+                <a type="button" routerLink="/detail/{{taikhoan.id}}" class="btn btn-primary"><i class="fa fa-pencil"
+                    aria-hidden="true"> </i> </a> ||
+
+                <button type="button" (click)="delete(taikhoan)" class="btn btn-primary"><i class="fa fa-trash-o"
+                    aria-hidden="true"></i></button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
